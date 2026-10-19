@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101525">
+  <meta name="description" content="Focus Quest：抽出今天的任務，搭配專注計時器，用遊戲化方式完成待辦事項。">
+  <title>Focus Quest｜任務抽卡實驗室</title>
+  <style>
+    :root{--bg:#0c1020;--surface:#171d32;--surface2:#1d2540;--surface3:#26304b;--line:rgba(190,206,255,.12);--text:#f3f6ff;--sub:#a5afca;--sub2:#7683a7;--primary:#9b8aff;--primary2:#c5a9ff;--mint:#73e9c9;--rose:#ff9fb4;--gold:#ffd48b;--shadow:0 20px 60px rgba(0,0,0,.25);--glow:rgba(155,138,255,.15)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 13% 0%,rgba(126,93,250,.20),transparent 33%),radial-gradient(ellipse at 95% 13%,rgba(44,179,199,.12),transparent 26%),var(--bg);color:var(--text);font:15px/1.6 system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;transition:background .25s,color .25s}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:3px}button{transition:transform .16s,filter .16s,background .16s}button:not(:disabled):active{transform:scale(.97)}.wrap{width:min(1210px,calc(100% - 44px));margin:0 auto}.topbar{height:78px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.logo{display:flex;align-items:center;gap:13px;font-size:20px;font-weight:850;letter-spacing:-.6px}.logo-icon{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,#a38dff,#6d65eb);box-shadow:0 5px 22px rgba(125,103,255,.32);font-size:22px}.logo span:last-child{color:var(--primary2)}.top-actions{display:flex;align-items:center;gap:12px}.tag{font-size:12px;font-weight:750;letter-spacing:.14em;color:var(--mint);padding:7px 11px;border:1px solid rgba(115,233,201,.25);border-radius:100px;background:rgba(115,233,201,.06)}.theme-btn{border:1px solid var(--line);background:var(--surface);border-radius:13px;color:var(--text);width:39px;height:39px;display:grid;place-items:center;font-size:18px}.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center;padding:44px 0 30px}.eyebrow{font-size:12px;color:var(--mint);text-transform:uppercase;letter-spacing:.22em;font-weight:850;margin:0 0 9px}.hero h1{font-size:clamp(30px,4vw,49px);line-height:1.19;letter-spacing:-1.6px;margin:0 0 13px;font-weight:900}.hero h1 em{font-style:normal;background:linear-gradient(110deg,var(--primary2),#7ce8d9);color:transparent;background-clip:text}.hero p{color:var(--sub);margin:0;max-width:610px}.hero-art{justify-self:end;width:280px;max-width:100%;height:180px;position:relative}.floating-card{position:absolute;width:125px;height:148px;border-radius:19px;background:linear-gradient(145deg,#3e3279,#262a59);border:1px solid rgba(255,255,255,.2);box-shadow:0 12px 35px rgba(1,1,8,.3);display:flex;flex-direction:column;justify-content:space-between;padding:17px}.floating-card.one{left:25px;top:10px;transform:rotate(-13deg)}.floating-card.two{left:116px;top:18px;transform:rotate(12deg);background:linear-gradient(145deg,#257f88,#183f65)}.floating-card .star{font-size:32px}.floating-card small{color:#e9eaff;font-weight:800;letter-spacing:.12em}.float-bubble{position:absolute;top:-2px;right:10px;color:var(--gold);font-size:28px;transform:rotate(14deg)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:24px}.stat{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:19px 20px;box-shadow:var(--shadow)}.stat .meta{display:flex;align-items:center;justify-content:space-between;color:var(--sub);font-size:13px;font-weight:750}.stat .ico{font-size:18px}.stat .num{font-size:32px;line-height:1.4;letter-spacing:-.6px;font-weight:900;margin-top:7px}.stat .unit{font-size:13px;color:var(--sub);font-weight:600;margin-left:5px}.stat:nth-child(2) .num{color:var(--mint)}.stat:nth-child(4) .num{color:var(--gold)}.grid-layout{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(350px,.78fr);gap:22px;align-items:start}.stack{display:grid;gap:22px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:23px;box-shadow:var(--shadow);padding:25px}.panel-title{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin:0 0 19px}.panel-title h2{font-size:19px;margin:0;letter-spacing:-.4px}.panel-title p{font-size:12px;color:var(--sub);margin:3px 0 0}.count-pill{font-size:12px;font-weight:800;padding:5px 11px;border-radius:50px;color:var(--primary2);background:rgba(155,138,255,.12)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.wide{grid-column:1/-1}.field label{font-size:12px;font-weight:750;color:var(--sub)}input,select{min-width:0;width:100%;height:43px;background:var(--surface2);border:1px solid var(--line);border-radius:11px;color:var(--text);padding:0 13px;outline:0}input::placeholder{color:var(--sub2)}select{color-scheme:dark}option{color:#f3f6ff;background:#202740}.action{border:0;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 17px;font-weight:820;white-space:nowrap}.action.primary{background:linear-gradient(120deg,#ab92ff,#817dff);color:#111329;box-shadow:0 7px 22px rgba(134,117,255,.23)}.action.primary:hover{filter:brightness(1.09)}.action.secondary{background:var(--surface3);color:var(--text);border:1px solid var(--line)}.action.ghost{background:transparent;color:var(--sub);border:1px solid var(--line)}.action.danger{color:var(--rose)}.full{width:100%}.add-action{margin-top:15px}.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}.filter{border:1px solid transparent;color:var(--sub);background:var(--surface2);padding:6px 13px;border-radius:9px;font-weight:760;font-size:12px}.filter[aria-pressed="true"]{background:rgba(155,138,255,.19);border-color:rgba(155,138,255,.29);color:var(--primary2)}.task-list{list-style:none;margin:0;padding:0;display:grid;gap:9px;max-height:380px;overflow:auto;scrollbar-width:thin}.task{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:var(--surface2);border-radius:14px;padding:12px 13px;min-width:0;transition:background .2s}.task:hover{background:var(--surface3)}.task.selected{border-color:rgba(155,138,255,.64);background:rgba(155,138,255,.12)}.check{width:24px;height:24px;border-radius:8px;border:2px solid var(--sub2);background:transparent;flex-shrink:0;color:#0c1020;font-size:14px;display:grid;place-items:center;font-weight:900}.task.done .check{background:var(--mint);border-color:var(--mint)}.task-content{flex:1;min-width:0}.task-name{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.task.done .task-name{text-decoration:line-through;color:var(--sub2)}.task-info{display:flex;gap:10px;flex-wrap:wrap;margin-top:1px;font-size:11px;color:var(--sub)}.priority{font-weight:800}.priority.high{color:var(--rose)}.priority.mid{color:var(--gold)}.priority.low{color:var(--mint)}.mini-btn{flex-shrink:0;border:0;background:transparent;color:var(--sub2);width:27px;height:30px;display:grid;place-items:center;border-radius:7px}.mini-btn:hover{color:var(--rose);background:rgba(255,160,180,.12)}.empty{text-align:center;color:var(--sub);padding:27px 10px;font-size:13px}.list-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:12px}.tiny{font-size:12px;color:var(--sub)}.text-btn{border:0;background:none;color:var(--sub);font-size:12px;text-decoration:underline;text-underline-offset:3px}.draw-panel{background:linear-gradient(155deg,rgba(114,93,224,.21),rgba(23,29,50,.6) 55%),var(--surface);border-color:rgba(160,142,255,.24)}.card-area{position:relative;display:grid;place-items:center;min-height:235px;margin:12px 0 15px;overflow:hidden}.card-area:before{content:"";width:205px;height:205px;border-radius:100%;background:rgba(146,122,251,.12);filter:blur(10px);position:absolute}.quest-card{width:205px;min-height:228px;position:relative;border-radius:19px;background:linear-gradient(155deg,#6152a6,#302c61 64%,#263358);border:1px solid rgba(225,210,255,.4);box-shadow:0 22px 48px rgba(0,0,0,.28),inset 0 0 0 5px rgba(255,255,255,.035);display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:19px 16px;animation:pop .5s cubic-bezier(.16,.9,.3,1)}@keyframes pop{0%{opacity:.4;transform:translateY(15px) rotate(-9deg) scale(.85)}100%{opacity:1;transform:translateY(0) rotate(-3deg) scale(1)}}.quest-card .card-top{font-size:10px;letter-spacing:.25em;font-weight:900;color:#d8cdfd}.quest-symbol{font-size:47px;line-height:1}.quest-text{font-size:15px;line-height:1.4;font-weight:900;overflow-wrap:anywhere;max-height:90px;overflow:auto}.quest-footer{font-size:11px;color:#d7d9fa}.draw-actions{display:flex;gap:9px}.draw-actions .action{flex:1;font-size:13px}.hint{text-align:center;font-size:12px;color:var(--sub);margin:12px 0 0}.timer-panel{overflow:hidden}.timer-modes{display:flex;gap:7px;margin-bottom:19px;justify-content:center}.mode{flex:1;border:1px solid var(--line);border-radius:10px;background:var(--surface2);color:var(--sub);padding:7px 6px;font-size:12px;font-weight:800}.mode[aria-pressed="true"]{color:var(--primary2);border-color:rgba(155,138,255,.48);background:rgba(155,138,255,.14)}.clock-wrap{display:grid;place-items:center;margin:0 auto 17px;position:relative;width:196px;height:196px}.clock-ring{position:absolute;inset:0;transform:rotate(-90deg)}.clock-ring circle{fill:none;stroke-width:9}.clock-ring .rail{stroke:var(--surface3)}.clock-ring .progress{stroke:var(--mint);stroke-linecap:round;transition:stroke-dashoffset .2s linear}.clock-content{text-align:center}.clock-label{color:var(--sub);font-size:12px;font-weight:700}.clock-time{font-size:41px;line-height:1.35;font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:-2px}.timer-actions{display:flex;justify-content:center;gap:9px}.timer-actions .action{min-width:115px}.progress-label{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--sub);margin:15px 0 8px}.bar{height:9px;border-radius:20px;background:var(--surface3);overflow:hidden}.bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#8d83fc,#72e9ca);border-radius:20px;transition:width .3s}.progress-tip{margin-top:11px;color:var(--sub);font-size:12px}.foot{padding:30px 0 40px;text-align:center;color:var(--sub2);font-size:12px}.toast{position:fixed;right:20px;bottom:20px;padding:13px 17px;border-radius:12px;background:var(--mint);color:#0e2430;font-weight:850;box-shadow:0 15px 50px #0005;z-index:10;max-width:min(360px,90vw);animation:showtoast .2s ease-out}.toast[hidden]{display:none}@keyframes showtoast{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}.spark{position:fixed;pointer-events:none;z-index:9;font-size:20px;animation:spark .85s forwards}@keyframes spark{to{transform:translate(var(--dx),var(--dy)) rotate(80deg);opacity:0}}body.light{--bg:#f1f3fa;--surface:#fff;--surface2:#f6f7fd;--surface3:#ebeefd;--line:rgba(54,65,102,.12);--text:#1d2441;--sub:#68718e;--sub2:#979fba;--primary:#6455d7;--primary2:#695ac4;--mint:#12876c;--rose:#c54b74;--gold:#a96a18;--shadow:0 14px 42px rgba(56,64,102,.07);--glow:rgba(155,138,255,.08)}body.light .draw-panel{background:linear-gradient(155deg,#f2ebff,#fff 68%)}body.light .action.primary{color:white}body.light .quest-card{color:white}body.light .quest-footer,body.light .quest-card .card-top{color:#e3dcff}body.light select{color-scheme:light}body.light option{background:white;color:#222}body.light .tag{color:#12876c;border-color:#b9eadd}body.light .eyebrow{color:#12876c}
+    @media(max-width:900px){.grid-layout{grid-template-columns:minmax(0,1fr) minmax(310px,.78fr)}.panel{padding:20px}.hero-art{width:235px}.floating-card.two{left:103px}}@media(max-width:700px){.wrap{width:min(100% - 28px,560px)}.topbar{height:68px}.logo{font-size:18px}.hero{grid-template-columns:1fr;padding:32px 0 23px}.hero-art{display:none}.hero h1{font-size:34px}.stats{grid-template-columns:repeat(2,1fr);gap:10px}.stat{padding:15px}.stat .num{font-size:27px}.grid-layout{grid-template-columns:1fr}.panel{padding:20px}.task-list{max-height:370px}.tag{font-size:10px;letter-spacing:.08em}}@media(max-width:375px){.tag{display:none}.form-grid{grid-template-columns:1fr}.field.wide{grid-column:auto}.draw-actions .action{font-size:12px;padding:10px 9px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div class="logo"><div class="logo-icon" aria-hidden="true">✦</div><div>FOCUS <span>QUEST</span></div></div>
+    <div class="top-actions"><span class="tag">LEVEL UP YOUR DAY</span><button class="theme-btn" id="themeBtn" aria-label="切換亮色或深色模式" title="切換主題">☀️</button></div>
+  </header>
+  <section class="hero" aria-label="應用程式簡介">
+    <div><p class="eyebrow" id="todayText">TODAY'S ADVENTURE</p><h1>讓每個待辦，<br>都變成一場<em>小冒險。</em></h1><p>選擇困難？讓任務卡牌幫你決定下一步。完成任務、累積經驗值，搭配專注計時器，把今天玩成自己的闖關遊戲。</p></div>
+    <div class="hero-art" aria-hidden="true"><div class="floating-card one"><span class="star">✦</span><small>YOUR QUEST</small></div><div class="floating-card two"><span class="star">⚡</span><small>FOCUS TIME</small></div><div class="float-bubble">✧</div></div>
+  </section>
+  <section class="stats" aria-label="任務統計">
+    <div class="stat"><div class="meta">全部任務 <span class="ico" aria-hidden="true">📋</span></div><div class="num"><span id="totalStat">0</span><span class="unit">個</span></div></div>
+    <div class="stat"><div class="meta">已完成 <span class="ico" aria-hidden="true">✅</span></div><div class="num"><span id="doneStat">0</span><span class="unit">個</span></div></div>
+    <div class="stat"><div class="meta">專注累積 <span class="ico" aria-hidden="true">⏱️</span></div><div class="num"><span id="focusStat">0</span><span class="unit">分鐘</span></div></div>
+    <div class="stat"><div class="meta">冒險經驗 <span class="ico" aria-hidden="true">🏆</span></div><div class="num"><span id="xpStat">0</span><span class="unit">XP</span></div></div>
+  </section>
+  <main class="grid-layout">
+    <div class="stack">
+      <section class="panel" aria-labelledby="addHeading">
+        <div class="panel-title"><div><h2 id="addHeading">✍️ 建立新任務</h2><p>寫下你想解決的事情，加入今日冒險清單。</p></div><span class="count-pill">+20 XP / 完成</span></div>
+        <form id="taskForm">
+          <div class="form-grid">
+            <div class="field wide"><label for="taskName">任務名稱</label><input id="taskName" type="text" maxlength="60" required placeholder="例如：完成數位控制作業" autocomplete="off"></div>
+            <div class="field"><label for="taskCategory">任務類型</label><select id="taskCategory"><option value="study">📚 學習</option><option value="work">💻 工作</option><option value="life">🌱 生活</option><option value="creative">🎨 創作</option></select></div>
+            <div class="field"><label for="taskPriority">優先程度</label><select id="taskPriority"><option value="high">🔥 高優先</option><option value="mid" selected>⚡ 中優先</option><option value="low">🍃 低優先</option></select></div>
+            <div class="field wide"><label for="taskMinutes">預計花費時間（分鐘）</label><input id="taskMinutes" type="number" min="5" max="180" value="25" required></div>
+          </div>
+          <button type="submit" class="action primary full add-action">＋ 加入任務清單</button>
+        </form>
+      </section>
+      <section class="panel" aria-labelledby="taskHeading">
+        <div class="panel-title"><div><h2 id="taskHeading">🗂️ 我的任務清單</h2><p>完成打勾得 XP；抽卡會優先考慮高優先任務。</p></div><span class="count-pill" id="pendingBadge">0 待完成</span></div>
+        <div class="filters" role="group" aria-label="任務篩選"><button class="filter" data-filter="all" aria-pressed="true">全部</button><button class="filter" data-filter="pending" aria-pressed="false">待完成</button><button class="filter" data-filter="done" aria-pressed="false">已完成</button></div>
+        <ul id="taskList" class="task-list" aria-label="任務列表"></ul>
+        <div class="list-bottom"><span class="tiny" id="taskCountText">點擊圓框完成任務</span><button class="text-btn" id="resetData" type="button">重設示範資料</button></div>
+      </section>
+      <section class="panel" aria-labelledby="progressHeading">
+        <div class="panel-title" style="margin-bottom:3px"><div><h2 id="progressHeading">📈 任務冒險進度</h2><p>一步一步來，進度就會長大。</p></div><span class="count-pill" id="progressBadge">0%</span></div>
+        <div class="progress-label"><span>任務完成率</span><span id="progressText">0 / 0</span></div><div class="bar" role="progressbar" aria-label="任務完成率" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar"><span id="progressFill"></span></div><div class="progress-tip" id="progressTip">先建立一個小任務，踏出第一步吧！</div>
+      </section>
+    </div>
+    <div class="stack">
+      <section class="panel draw-panel" aria-labelledby="drawHeading">
+        <div class="panel-title"><div><h2 id="drawHeading">🎴 命運任務抽卡</h2><p>不知道先做哪件事？抽張卡開始！</p></div><span class="count-pill">RANDOM PICK</span></div>
+        <div class="card-area"><div id="questCard" class="quest-card"><div class="card-top">★ TODAY'S QUEST ★</div><div class="quest-symbol" id="questEmoji">✨</div><div class="quest-text" id="questText">下一個挑戰<br>等你來抽！</div><div class="quest-footer" id="questFooter">PRESS DRAW TO START</div></div></div>
+        <div class="draw-actions"><button class="action primary" id="drawBtn" type="button">✦ 隨機抽一張</button><button class="action secondary" id="startQuestBtn" type="button" disabled>▶ 專注這件事</button></div>
+        <p class="hint" id="drawHint">提示：高優先任務有較高機率被抽中。</p>
+      </section>
+      <section class="panel timer-panel" aria-labelledby="timerHeading">
+        <div class="panel-title"><div><h2 id="timerHeading">⏳ 番茄專注計時</h2><p>讓時間站在你這邊，而不是追著你跑。</p></div><span class="count-pill" id="sessionBadge">0 次專注</span></div>
+        <div class="timer-modes" role="group" aria-label="選擇計時模式"><button class="mode" data-min="15" aria-pressed="false">15 分鐘</button><button class="mode" data-min="25" aria-pressed="true">25 分鐘</button><button class="mode" data-min="45" aria-pressed="false">45 分鐘</button><button class="mode" data-min="5" data-break="true" aria-pressed="false">休息 5 分</button></div>
+        <div class="clock-wrap"><svg class="clock-ring" viewBox="0 0 196 196" aria-hidden="true"><circle class="rail" cx="98" cy="98" r="88"/><circle class="progress" id="timerProgress" cx="98" cy="98" r="88"/></svg><div class="clock-content"><div class="clock-label" id="clockLabel">專注模式</div><div class="clock-time" id="clockTime" role="timer" aria-live="off">25:00</div><div class="clock-label" id="clockTask">準備好就出發</div></div></div>
+        <div class="timer-actions"><button class="action primary" id="timerToggle" type="button">▶ 開始專注</button><button class="action ghost" id="timerReset" type="button">↻ 重設</button></div>
+        <p class="hint">完整結束一次專注獲得 +10 XP，休息時間不計分。</p>
+      </section>
+    </div>
+  </main>
+  <footer class="foot">FOCUS QUEST · 任務抽卡實驗室　｜　資料僅保存在此瀏覽器（localStorage），無須登入。</footer>
+</div>
+<div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+<script>
+(()=>{'use strict';
+  const KEY='focus-quest-v1';
+  const categories={study:{label:'學習',icon:'📚'},work:{label:'工作',icon:'💻'},life:{label:'生活',icon:'🌱'},creative:{label:'創作',icon:'🎨'}};
+  const priority={high:{label:'高優先',weight:4},mid:{label:'中優先',weight:2},low:{label:'低優先',weight:1}};
+  const $=id=>document.getElementById(id);
+  const today=new Date();
+  $('todayText').textContent=new Intl.DateTimeFormat('zh-TW',{year:'numeric',month:'long',day:'numeric',weekday:'long'}).format(today)+' · TODAY\'S ADVENTURE';
+  const seed=()=>({tasks:[
+    {id:'sample-1',name:'整理這週的課堂筆記',category:'study',priority:'high',minutes:25,done:false,rewarded:false},
+    {id:'sample-2',name:'完成一項重要的待辦',category:'work',priority:'high',minutes:45,done:false,rewarded:false},
+    {id:'sample-3',name:'散步或伸展 15 分鐘',category:'life',priority:'low',minutes:15,done:false,rewarded:false},
+    {id:'sample-4',name:'找個新點子，動手做點東西',category:'creative',priority:'mid',minutes:25,done:false,rewarded:false}
+  ],xp:0,focusMinutes:0,sessions:0,theme:'dark'});
+  let data=seed();
+  try{const stored=JSON.parse(localStorage.getItem(KEY));if(stored&&Array.isArray(stored.tasks))data={...data,...stored,tasks:stored.tasks.filter(t=>t&&typeof t.name==='string'&&categories[t.category]&&priority[t.priority])};}catch(e){/* 壞掉的資料會自動回到示範狀態 */}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){notice('瀏覽器無法儲存，這次操作仍可使用。');}}
+  let filter='all',selectedId=null,lastDrawnId=null;
+  function notice(message){const el=$('toast');el.textContent=message;el.hidden=false;clearTimeout(notice.timer);notice.timer=setTimeout(()=>{el.hidden=true;},3100);}
+  function render(){
+    const done=data.tasks.filter(t=>t.done).length,pending=data.tasks.length-done;
+    $('totalStat').textContent=data.tasks.length;$('doneStat').textContent=done;$('focusStat').textContent=data.focusMinutes;$('xpStat').textContent=data.xp;$('pendingBadge').textContent=pending+' 待完成';$('sessionBadge').textContent=data.sessions+' 次專注';
+    const pct=data.tasks.length?Math.round(100*done/data.tasks.length):0;
+    $('progressBadge').textContent=pct+'%';$('progressText').textContent=done+' / '+data.tasks.length;$('progressFill').style.width=pct+'%';$('progressBar').setAttribute('aria-valuenow',String(pct));
+    $('progressTip').textContent=pct===100&&data.tasks.length?'🎉 全部通關！今天的你真的有料。':pct>=50?'💪 已經超過一半，繼續推進！':data.tasks.length?'🎯 每完成一件，就離目標更近一步。':'先建立一個小任務，踏出第一步吧！';
+    const visible=data.tasks.filter(t=>filter==='all'||(filter==='done'?t.done:!t.done));
+    const list=$('taskList');list.replaceChildren();
+    if(!visible.length){const li=document.createElement('li');li.className='empty';li.textContent=filter==='all'?'還沒有任務，先新增一個吧！':filter==='pending'?'待完成清單空空的，你很可以！':'還沒有完成的任務，從一件小事開始吧。';list.append(li);}
+    visible.forEach(t=>{
+      const li=document.createElement('li');li.className='task'+(t.done?' done':'')+(t.id===selectedId?' selected':'');
+      const check=document.createElement('button');check.type='button';check.className='check';check.textContent=t.done?'✓':'';check.setAttribute('aria-label',t.done?'標記未完成：'+t.name:'標記完成：'+t.name);check.addEventListener('click',()=>toggleDone(t.id));
+      const content=document.createElement('div');content.className='task-content';
+      const name=document.createElement('div');name.className='task-name';name.textContent=t.name;name.title=t.name;
+      const info=document.createElement('div');info.className='task-info';
+      const cat=document.createElement('span');cat.textContent=categories[t.category].icon+' '+categories[t.category].label;
+      const pri=document.createElement('span');pri.className='priority '+t.priority;pri.textContent='● '+priority[t.priority].label;
+      const mins=document.createElement('span');mins.textContent='◷ '+t.minutes+' 分鐘';info.append(cat,pri,mins);content.append(name,info);
+      const del=document.createElement('button');del.type='button';del.className='mini-btn';del.textContent='✕';del.title='刪除此任務';del.setAttribute('aria-label','刪除：'+t.name);del.addEventListener('click',()=>removeTask(t.id));
+      li.append(check,content,del);list.append(li);
+    });
+    $('taskCountText').textContent='共 '+data.tasks.length+' 個任務 · 已完成 '+done+' 個';
+    const selected=data.tasks.find(t=>t.id===selectedId&&!t.done);if(!selected&&selectedId){selectedId=null;renderCard();}
+    $('drawBtn').disabled=pending===0;
+    $('startQuestBtn').disabled=!selectedId;
+  }
+  function freshId(){return crypto&&typeof crypto.randomUUID==='function'?crypto.randomUUID():'q-'+Date.now()+'-'+Math.random().toString(16).slice(2);}
+  $('taskForm').addEventListener('submit',e=>{
+    e.preventDefault();const name=$('taskName').value.trim(),minutes=Number($('taskMinutes').value);
+    if(!name){notice('請先輸入任務名稱。');$('taskName').focus();return;}
+    if(!Number.isInteger(minutes)||minutes<5||minutes>180){notice('預計時間必須介於 5 到 180 分鐘。');return;}
+    data.tasks.unshift({id:freshId(),name,category:$('taskCategory').value,priority:$('taskPriority').value,minutes,done:false,rewarded:false});save();render();$('taskName').value='';$('taskName').focus();notice('任務加入成功！現在可以抽卡了 ✨');
+  });
+  function toggleDone(id){const t=data.tasks.find(x=>x.id===id);if(!t)return;t.done=!t.done;if(t.done&&!t.rewarded){data.xp+=20;t.rewarded=true;notice('任務完成！獲得 +20 XP 🎉');}else notice(t.done?'任務已完成！':'已移回待完成清單。');save();render();}
+  function removeTask(id){const idx=data.tasks.findIndex(t=>t.id===id);if(idx<0)return;const wasSelected=selectedId===id;data.tasks.splice(idx,1);if(wasSelected){selectedId=null;renderCard();}save();render();notice('任務已刪除。');}
+  document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{filter=btn.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));render();}));
+  function renderCard(){const t=data.tasks.find(x=>x.id===selectedId&&!x.done);const card=$('questCard');card.style.animation='none';void card.offsetWidth;card.style.animation='';$('questEmoji').textContent=t?categories[t.category].icon:'✨';$('questText').textContent=t?t.name:'下一個挑戰，等你來抽！';$('questFooter').textContent=t?`${priority[t.priority].label} · 約 ${t.minutes} 分鐘`:'PRESS DRAW TO START';$('drawHint').textContent=t?'這張卡就是你的下一步！按「專注這件事」開始計時。':'提示：高優先任務有較高機率被抽中。';$('startQuestBtn').disabled=!t;}
+  $('drawBtn').addEventListener('click',()=>{
+    let pool=data.tasks.filter(t=>!t.done);if(!pool.length){notice('任務都完成了，新增一些任務再抽吧！');return;}
+    if(pool.length>1){const avoid=pool.filter(t=>t.id!==lastDrawnId);if(avoid.length)pool=avoid;}
+    const total=pool.reduce((s,t)=>s+priority[t.priority].weight,0);let roll=Math.random()*total;const chosen=pool.find(t=>(roll-=priority[t.priority].weight)<0)||pool[pool.length-1];selectedId=chosen.id;lastDrawnId=selectedId;renderCard();render();notice('命運選中了：'+chosen.name);
+  });
+  $('resetData').addEventListener('click',()=>{if(!confirm('要清除目前所有任務、XP 和專注紀錄，回到示範資料嗎？'))return;const currentTheme=data.theme;data=seed();data.theme=currentTheme;selectedId=null;lastDrawnId=null;filter='all';document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter==='all')));setTimerMode(25,false);save();renderCard();render();notice('已還原示範資料。');});
+  const circumference=2*Math.PI*88;$('timerProgress').style.strokeDasharray=String(circumference);
+  let duration=25*60,remaining=duration,running=false,deadline=0,handle=null,isBreak=false;
+  function timerPaint(){const m=Math.floor(remaining/60),s=remaining%60;$('clockTime').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');$('timerProgress').style.strokeDashoffset=String(circumference*(1-remaining/duration));document.title=(running?$('clockTime').textContent+' · ':'')+'Focus Quest｜任務抽卡實驗室';}
+  function stopTimer(){running=false;clearInterval(handle);handle=null;$('timerToggle').textContent='▶ 開始專注';}
+  function setTimerMode(mins,breakMode){stopTimer();duration=mins*60;remaining=duration;isBreak=breakMode;document.querySelectorAll('.mode').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.min)===mins&&Boolean(b.dataset.break)===breakMode)));$('clockLabel').textContent=isBreak?'休息模式':'專注模式';$('clockTask').textContent=isBreak?'好好休息一下':'準備好就出發';timerPaint();}
+  function tick(){if(!running)return;remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));timerPaint();if(remaining===0){stopTimer();if(!isBreak){data.sessions++;data.focusMinutes+=duration/60;data.xp+=10;save();render();notice('專注成功！獲得 +10 XP 🎉');}else notice('休息結束！繼續下一場冒險。');$('clockTask').textContent=isBreak?'休息結束':'這一回合通關！';chime();}}
+  function chime(){try{const AudioContext=window.AudioContext||window.webkitAudioContext;if(!AudioContext)return;const ctx=new AudioContext();const oscillator=ctx.createOscillator(),gain=ctx.createGain();oscillator.type='sine';oscillator.frequency.value=740;gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.12,ctx.currentTime+.03);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.38);oscillator.connect(gain);gain.connect(ctx.destination);oscillator.start();oscillator.stop(ctx.currentTime+.4);oscillator.onended=()=>ctx.close();}catch(e){}}
+  document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>{setTimerMode(Number(b.dataset.min),!!b.dataset.break);}));
+  $('timerToggle').addEventListener('click',()=>{if(running){tick();stopTimer();$('clockTask').textContent='已暫停，隨時可以繼續';}else{if(remaining===0)remaining=duration;running=true;deadline=Date.now()+remaining*1000;handle=setInterval(tick,250);$('timerToggle').textContent='Ⅱ 暫停計時';$('clockTask').textContent=isBreak?'休息進行中...':'保持專注，你做得到！';timerPaint();}});
+  $('timerReset').addEventListener('click',()=>{stopTimer();remaining=duration;$('clockTask').textContent=isBreak?'好好休息一下':'準備好就出發';timerPaint();});
+  $('startQuestBtn').addEventListener('click',()=>{const task=data.tasks.find(t=>t.id===selectedId&&!t.done);if(!task)return;const mins=Math.min(45,task.minutes);setTimerMode(mins,false);$('clockTask').textContent='目標：'+(task.name.length>12?task.name.slice(0,12)+'…':task.name);$('timerToggle').click();$('timerHeading').scrollIntoView({behavior:'smooth',block:'center'});notice('開始專注 '+mins+' 分鐘！');});
+  $('themeBtn').addEventListener('click',()=>{data.theme=data.theme==='light'?'dark':'light';applyTheme();save();});
+  function applyTheme(){document.body.classList.toggle('light',data.theme==='light');$('themeBtn').textContent=data.theme==='light'?'🌙':'☀️';$('themeBtn').title=data.theme==='light'?'切換深色模式':'切換亮色模式';}
+  applyTheme();renderCard();render();timerPaint();
+})();
+</script>
+</body>
+</html>
